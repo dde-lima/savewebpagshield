@@ -5,7 +5,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar {
         width: 100%;
         height: 100px;
-        background: #00A650;
+        background: #089141;
         display: flex;
         align-items: center;
         padding: 0 20px;
@@ -25,10 +25,17 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         padding: 10px 0;
       }
   
-      .user-bar .logo img {
+      .user-bar .logo .avatar {
         width: 52px;
         height: 52px;
         border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .user-bar .logo .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
   
       .user-bar .logo .name-container {
@@ -77,7 +84,8 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
   
       .typebot-chat-view {
-        margin-top: 100px;
+        margin-top: 120px !important;
+        padding-top: 20px;
       }
 
       @media screen and (max-width: 414px) {
@@ -116,7 +124,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     var logo = document.createElement("div");
     logo.className = "logo";
     logo.innerHTML = `
-      <img src="${var_avatar}" alt="Avatar">
+      <div class="avatar"><img src="${var_avatar}" alt="Rodrigo"></div>
       <div class="name-container">
         <div class="name-wrapper">
           <div class="name">${var_nome}</div>
