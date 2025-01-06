@@ -4,7 +4,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar {
         width: 100%;
-        height: 64px;
+        height: 80px;
         background: #00A650;
         display: flex;
         align-items: center;
@@ -23,8 +23,8 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
   
       .user-bar .logo img {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
       }
   
@@ -33,11 +33,23 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         flex-direction: column;
       }
 
+      .user-bar .logo .name-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
       .user-bar .logo .name {
         color: white;
-        font-size: 16px;
+        font-size: 17px;
         font-weight: 600;
         margin-bottom: 2px;
+      }
+
+      .user-bar .logo .verified-icon {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
       }
 
       .user-bar .logo .subtitle {
@@ -57,12 +69,12 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
   
       .user-bar .back svg {
         fill: white;
-        width: 20px;
-        height: 20px;
+        width: 24px;
+        height: 24px;
       }
   
       .typebot-chat-view {
-        margin-top: 64px;
+        margin-top: 80px;
       }
     `;
   
@@ -97,7 +109,12 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     logo.innerHTML = `
       <img src="${var_avatar}" alt="Avatar">
       <div class="name-container">
-        <div class="name">${var_nome}</div>
+        <div class="name-wrapper">
+          <div class="name">${var_nome}</div>
+          <svg class="verified-icon" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+            <polygon id="Star-2" fill="#27a1f9" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9"></polygon>
+          </svg>
+        </div>
         <div class="subtitle">Atendimento</div>
       </div>
     `;
