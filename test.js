@@ -1,8 +1,10 @@
-function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://via.placeholder.com/50', var_insta_url = '#') {
+function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendimentoonline.cloud/typebot/public/workspaces/cm4h5widm0007uw0d1tmvwezu/typebots/cm4h5zgoe000euw0d4h1nuklq/hostAvatar?v=1733804036053', var_insta_url = '#') {
     const css = `
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
       .user-bar {
         width: 100%;
-        height: 56px;
+        height: 64px;
         background: #00A650;
         display: flex;
         align-items: center;
@@ -11,44 +13,59 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://via.placehold
         position: absolute;
         top: 0;
         z-index: 9999;
+        font-family: 'Inter', sans-serif;
       }
   
       .user-bar .logo {
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 12px;
       }
   
       .user-bar .logo img {
-        width: 32px;
-        height: 32px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
       }
   
+      .user-bar .logo .name-container {
+        display: flex;
+        flex-direction: column;
+      }
+
       .user-bar .logo .name {
         color: white;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .user-bar .logo .subtitle {
+        color: white;
+        font-size: 13px;
+        font-weight: 400;
+        opacity: 0.9;
       }
 
       .user-bar .back {
         color: white;
         margin-right: 16px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
       }
   
       .user-bar .back svg {
         fill: white;
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
       }
   
       .typebot-chat-view {
-        margin-top: 56px;
+        margin-top: 64px;
       }
     `;
   
-    // Verifica se o estilo já foi adicionado
     var cssId = 'myCss';
     if (!document.getElementById(cssId)) {
       var head = document.getElementsByTagName("typebot-standard")[0].shadowRoot.querySelector('.typebot-container');
@@ -59,17 +76,15 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://via.placehold
       head.appendChild(styleSheet);
     }
   
-    // Criação da navbar
     var elementoPai = document.getElementsByTagName("typebot-standard")[0].shadowRoot.querySelector('.typebot-container');
     var userBar = document.createElement("div");
     userBar.className = "user-bar";
   
-    // Botão de voltar
     var backButton = document.createElement("div");
     backButton.className = "back";
     backButton.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
       </svg>
     `;
   
@@ -77,12 +92,14 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://via.placehold
       window.location.href = `${var_insta_url}`;
     });
   
-    // Logo e nome
     var logo = document.createElement("div");
     logo.className = "logo";
     logo.innerHTML = `
       <img src="${var_avatar}" alt="Avatar">
-      <div class="name">${var_nome}</div>
+      <div class="name-container">
+        <div class="name">${var_nome}</div>
+        <div class="subtitle">Atendimento</div>
+      </div>
     `;
   
     userBar.appendChild(backButton);
