@@ -4,14 +4,16 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar {
         width: 100%;
-        height: 80px;
+        height: 100px;
         background: #00A650;
         display: flex;
         align-items: center;
-        padding: 0 16px;
+        padding: 0 20px;
         box-sizing: border-box;
-        position: absolute;
+        position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
         z-index: 9999;
         font-family: 'Inter', sans-serif;
       }
@@ -20,11 +22,12 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         display: flex;
         align-items: center;
         gap: 12px;
+        padding: 10px 0;
       }
   
       .user-bar .logo img {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
       }
   
@@ -41,27 +44,27 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar .logo .name {
         color: white;
-        font-size: 17px;
+        font-size: 18px;
         font-weight: 600;
         margin-bottom: 2px;
       }
 
       .user-bar .logo .verified-icon {
-        width: 16px;
-        height: 16px;
+        width: 18px;
+        height: 18px;
         margin-top: 2px;
       }
 
       .user-bar .logo .subtitle {
         color: white;
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 400;
         opacity: 0.9;
       }
 
       .user-bar .back {
         color: white;
-        margin-right: 16px;
+        margin-right: 20px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -69,12 +72,18 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
   
       .user-bar .back svg {
         fill: white;
-        width: 24px;
-        height: 24px;
+        width: 28px;
+        height: 28px;
       }
   
       .typebot-chat-view {
-        margin-top: 80px;
+        margin-top: 100px;
+      }
+
+      @media screen and (max-width: 414px) {
+        .user-bar {
+          width: 414px;
+        }
       }
     `;
   
@@ -111,8 +120,9 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       <div class="name-container">
         <div class="name-wrapper">
           <div class="name">${var_nome}</div>
-          <svg class="verified-icon" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="3 0 14 16" height="17" width="18" preserveAspectRatio="xMidYMid meet" class="verified-icon" version="1.1" x="0px" y="0px" enable-background="new 0 0 18 18" xml:space="preserve">
             <polygon id="Star-2" fill="#27a1f9" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9"></polygon>
+            <polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4"></polygon>
           </svg>
         </div>
         <div class="subtitle">Atendimento</div>
