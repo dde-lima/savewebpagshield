@@ -27,6 +27,8 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar .avatar {
         margin: 0 0 0 5px;
         background-color: orange;
+        min-width: 60px;
+        min-height: 60px;
         width: 60px;
         height: 60px;
         object-fit: cover;
@@ -38,14 +40,17 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         display: flex;
         align-items: center;
         justify-content: center;
+        box-sizing: content-box;
       }
 
       .user-bar .avatar img {
         border-radius: 50%;
         box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
         display: block;
-        width: 100%;
-        height: 100%;
+        min-width: 60px;
+        min-height: 60px;
+        width: 60px;
+        height: 60px;
         object-fit: cover;
       }
 
@@ -114,6 +119,13 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       @media screen and (max-width: 414px) {
         .user-bar {
           width: 414px;
+        }
+        .user-bar .avatar,
+        .user-bar .avatar img {
+          min-width: 60px;
+          min-height: 60px;
+          width: 60px;
+          height: 60px;
         }
       }
 
