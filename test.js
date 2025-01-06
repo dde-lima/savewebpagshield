@@ -18,6 +18,57 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         font-family: 'Inter', sans-serif;
       }
   
+      .user-bar .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 0;
+      }
+  
+      .user-bar .logo .avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .user-bar .logo .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+  
+      .user-bar .logo .name-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .user-bar .logo .name-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .user-bar .logo .name {
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .user-bar .logo .verified-icon {
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+      }
+
+      .user-bar .logo .subtitle {
+        color: white;
+        font-size: 14px;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+
       .user-bar .back {
         color: white;
         margin-right: 20px;
@@ -27,54 +78,9 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
   
       .user-bar .back svg {
-        fill: currentColor;
-        width: 1em;
-        height: 1em;
-        font-size: 24px;
-      }
-
-      .user-bar .avatar {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin-right: 12px;
-      }
-
-      .user-bar .avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-  
-      .user-bar .name {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        flex: 1;
-      }
-
-      .user-bar .name span:first-child {
-        color: white;
-        font-size: 18px;
-        font-weight: 600;
-      }
-
-      .user-bar .name .status {
-        color: white;
-        font-size: 14px;
-        font-weight: 400;
-        opacity: 0.9;
-        display: block;
-        margin-top: 2px;
-      }
-
-      .user-bar .actions {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        fill: white;
+        width: 28px;
+        height: 28px;
       }
   
       .typebot-chat-view {
@@ -103,36 +109,35 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     var userBar = document.createElement("div");
     userBar.className = "user-bar";
   
-    userBar.innerHTML = `
-      <div class="back">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024">
-          <g transform="rotate(-90 512 512)">
-            <path fill="currentColor" d="M104.704 685.248a64 64 0 0 0 90.496 0l316.8-316.8l316.8 316.8a64 64 0 0 0 90.496-90.496L557.248 232.704a64 64 0 0 0-90.496 0L104.704 594.752a64 64 0 0 0 0 90.496"></path>
-          </g>
-        </svg>
-      </div>
-      <div class="avatar">
-        <img src="${var_avatar}" alt="Rodrigo">
-      </div>
-      <div class="name">
-        <span>${var_nome}</span>
-        <span data-testid="psa-verified" data-icon="psa-verified" class="">
-          <svg viewBox="3 0 14 16" height="17" width="18" preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px" enable-background="new 0 0 18 18" xml:space="preserve">
-            <polygon id="Star-2" fill="#27a1f9" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9"></polygon>
-            <polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4"></polygon>
-          </svg>
-        </span>
-        <span class="status">Atendimento</span>
-      </div>
-      <div class="actions more"></div>
-      <div class="actions attachment"></div>
-      <div class="actions"></div>
+    var backButton = document.createElement("div");
+    backButton.className = "back";
+    backButton.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
+      </svg>
     `;
-
-    const backButton = userBar.querySelector('.back');
+  
     backButton.addEventListener("click", function () {
       window.location.href = `${var_insta_url}`;
     });
   
+    var logo = document.createElement("div");
+    logo.className = "logo";
+    logo.innerHTML = `
+      <div class="avatar"><img src="${var_avatar}" alt="Rodrigo"></div>
+      <div class="name-container">
+        <div class="name-wrapper">
+          <div class="name">${var_nome}</div>
+          <svg viewBox="3 0 14 16" height="17" width="18" preserveAspectRatio="xMidYMid meet" class="verified-icon" version="1.1" x="0px" y="0px" enable-background="new 0 0 18 18" xml:space="preserve">
+            <polygon id="Star-2" fill="#27a1f9" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9"></polygon>
+            <polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4"></polygon>
+          </svg>
+        </div>
+        <div class="subtitle">Atendimento</div>
+      </div>
+    `;
+  
+    userBar.appendChild(backButton);
+    userBar.appendChild(logo);
     elementoPai.insertBefore(userBar, elementoPai.firstChild);
 }
