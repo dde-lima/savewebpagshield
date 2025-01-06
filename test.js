@@ -17,13 +17,13 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         z-index: 9999;
         font-family: 'Inter', sans-serif;
       }
-  
+
       .user-bar .logo {
         display: flex;
         align-items: center;
         gap: 8px;
       }
-  
+
       .user-bar .avatar {
         margin: 0 0 0 5px;
         background-color: orange;
@@ -95,14 +95,14 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         display: flex;
         align-items: center;
       }
-  
+
       .user-bar .back svg {
         fill: currentColor;
         width: 1em;
         height: 1em;
         font-size: 22px;
       }
-  
+
       .typebot-chat-view {
         margin-top: 108px !important;
         padding-top: 0;
@@ -114,6 +114,10 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .typebot-chat-view > div {
         margin-top: 108px !important;
+      }
+
+      .hide {
+        display: none !important;
       }
 
       @media screen and (max-width: 414px) {
@@ -184,4 +188,12 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     userBar.appendChild(backButton);
     userBar.appendChild(logo);
     elementoPai.insertBefore(userBar, elementoPai.firstChild);
+
+    // Ocultar elementos pelo seletor
+    const hideElements = () => {
+      const elementsToHide = elementoPai.querySelectorAll('.hide');
+      elementsToHide.forEach(el => el.style.display = 'none');
+    };
+
+    hideElements(); // Chamando a função para ocultar os elementos com a classe 'hide'
 }
