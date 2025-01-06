@@ -27,13 +27,13 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar .logo .avatar-container {
         margin: 0;
         background-color: orange;
-        width: 60px;
-        height: 60px;
+        width: 65px;
+        height: 65px;
         border-radius: 50%;
         background: linear-gradient(orange, orange) padding-box, 
                   linear-gradient(45deg, #408FF5, #0D65B9, #171C2A) border-box;
         border: 2px solid transparent;
-        padding: 1px;
+        padding: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -96,16 +96,16 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
   
       .typebot-chat-view {
-        margin-top: 112px !important;
+        margin-top: 108px !important;
         padding-top: 0;
       }
 
       .typebot-container > div:nth-child(2) {
-        margin-top: 112px !important;
+        margin-top: 108px !important;
       }
 
       .typebot-chat-view > div {
-        margin-top: 112px !important;
+        margin-top: 108px !important;
       }
 
       @media screen and (max-width: 414px) {
