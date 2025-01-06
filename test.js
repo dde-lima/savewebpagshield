@@ -189,11 +189,9 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     userBar.appendChild(logo);
     elementoPai.insertBefore(userBar, elementoPai.firstChild);
 
-    // Ocultar elementos pelo seletor
-    const hideElements = () => {
-      const elementsToHide = elementoPai.querySelectorAll('.hide');
-      elementsToHide.forEach(el => el.style.display = 'none');
-    };
-
-    hideElements(); // Chamando a função para ocultar os elementos com a classe 'hide'
+    // Ocultar o elemento com ID 'lite-badge'
+    const liteBadge = elementoPai.querySelector('#lite-badge');
+    if (liteBadge) {
+        liteBadge.style.display = 'none';
+    }
 }
