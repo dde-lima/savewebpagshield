@@ -5,10 +5,10 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar {
         width: 100%;
         height: 100px;
-        background: #00A650;
+        background: #089141;
         display: flex;
         align-items: center;
-        padding: 0 20px;
+        padding: 0 12px;
         box-sizing: border-box;
         position: fixed;
         top: 0;
@@ -23,12 +23,27 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         align-items: center;
         gap: 12px;
         padding: 10px 0;
+        margin-left: 5px;
       }
   
-      .user-bar .logo img {
+      .user-bar .logo .avatar-container {
+        margin: 0 0 0 5px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #408FF5, #0D65B9, #171C2A) border-box;
+        border: 3px solid transparent;
+        padding: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .user-bar .logo .avatar-container img {
         width: 52px;
         height: 52px;
         border-radius: 50%;
+        object-fit: cover;
       }
   
       .user-bar .logo .name-container {
@@ -64,20 +79,22 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar .back {
         color: white;
-        margin-right: 20px;
+        margin-right: 15px;
         cursor: pointer;
         display: flex;
         align-items: center;
       }
   
       .user-bar .back svg {
-        fill: white;
-        width: 28px;
-        height: 28px;
+        fill: currentColor;
+        width: 1em;
+        height: 1em;
+        font-size: 24px;
       }
   
       .typebot-chat-view {
-        margin-top: 100px;
+        margin-top: 140px !important;
+        padding-top: 20px;
       }
 
       @media screen and (max-width: 414px) {
@@ -104,8 +121,10 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     var backButton = document.createElement("div");
     backButton.className = "back";
     backButton.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024">
+        <g transform="rotate(-90 512 512)">
+          <path fill="currentColor" d="M104.704 685.248a64 64 0 0 0 90.496 0l316.8-316.8l316.8 316.8a64 64 0 0 0 90.496-90.496L557.248 232.704a64 64 0 0 0-90.496 0L104.704 594.752a64 64 0 0 0 0 90.496"></path>
+        </g>
       </svg>
     `;
   
@@ -116,7 +135,9 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     var logo = document.createElement("div");
     logo.className = "logo";
     logo.innerHTML = `
-      <img src="${var_avatar}" alt="Avatar">
+      <div class="avatar-container">
+        <img src="${var_avatar}" alt="Avatar">
+      </div>
       <div class="name-container">
         <div class="name-wrapper">
           <div class="name">${var_nome}</div>
