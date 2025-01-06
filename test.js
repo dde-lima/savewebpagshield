@@ -120,6 +120,10 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         display: none !important;
       }
 
+      #lite-badge {
+        display: none !important;
+      }
+
       @media screen and (max-width: 414px) {
         .user-bar {
           width: 414px;
@@ -189,9 +193,14 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     userBar.appendChild(logo);
     elementoPai.insertBefore(userBar, elementoPai.firstChild);
 
-    // Ocultar o elemento com ID 'lite-badge'
+    // Ocultar todos os elementos com as classes e IDs especificados
     const liteBadge = elementoPai.querySelector('#lite-badge');
     if (liteBadge) {
         liteBadge.style.display = 'none';
     }
+
+    const hideElements = elementoPai.querySelectorAll('.hide');
+    hideElements.forEach((element) => {
+        element.style.display = 'none';
+    });
 }
