@@ -4,7 +4,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar {
         width: 100%;
-        height: 70px;
+        height: 100px;
         background: #089141;
         display: flex;
         align-items: center;
@@ -21,15 +21,14 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar .logo {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-left: 4px;
+        gap: 8px;
       }
   
       .user-bar .logo .avatar-container {
-        margin: 0 0 0 5px;
+        margin: 0;
         background-color: orange;
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         background: linear-gradient(orange, orange) padding-box, 
                   linear-gradient(45deg, #408FF5, #0D65B9, #171C2A) border-box;
@@ -41,8 +40,8 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
 
       .user-bar .logo .avatar-container img {
-        width: 44px;
-        height: 44px;
+        width: 54px;
+        height: 54px;
         border-radius: 50%;
         object-fit: cover;
       }
@@ -50,7 +49,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar .logo .name-container {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 4px;
       }
 
       .user-bar .logo .name-wrapper {
@@ -76,11 +75,12 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         font-size: 13px;
         font-weight: 400;
         opacity: 0.9;
+        margin-top: 2px;
       }
 
       .user-bar .back {
         color: white;
-        margin-right: 12px;
+        margin-right: 8px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -94,7 +94,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
   
       .typebot-chat-view {
-        margin-top: 90px !important;
+        margin-top: 120px !important;
         padding-top: 20px;
       }
 
