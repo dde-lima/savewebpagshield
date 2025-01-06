@@ -4,11 +4,11 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar {
         width: 100%;
-        height: 100px;
+        height: 70px;
         background: #089141;
         display: flex;
         align-items: center;
-        padding: 0 12px;
+        padding: 0 8px;
         box-sizing: border-box;
         position: fixed;
         top: 0;
@@ -21,18 +21,19 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar .logo {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 10px 0;
-        margin-left: 5px;
+        gap: 10px;
+        margin-left: 4px;
       }
   
       .user-bar .logo .avatar-container {
         margin: 0 0 0 5px;
-        width: 60px;
-        height: 60px;
+        background-color: orange;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        background: linear-gradient(45deg, #408FF5, #0D65B9, #171C2A) border-box;
-        border: 3px solid transparent;
+        background: linear-gradient(orange, orange) padding-box, 
+                  linear-gradient(45deg, #408FF5, #0D65B9, #171C2A) border-box;
+        border: 2px solid transparent;
         padding: 1px;
         display: flex;
         align-items: center;
@@ -40,8 +41,8 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       }
 
       .user-bar .logo .avatar-container img {
-        width: 52px;
-        height: 52px;
+        width: 44px;
+        height: 44px;
         border-radius: 50%;
         object-fit: cover;
       }
@@ -49,6 +50,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
       .user-bar .logo .name-container {
         display: flex;
         flex-direction: column;
+        gap: 2px;
       }
 
       .user-bar .logo .name-wrapper {
@@ -59,27 +61,26 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
 
       .user-bar .logo .name {
         color: white;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
-        margin-bottom: 2px;
       }
 
       .user-bar .logo .verified-icon {
-        width: 18px;
-        height: 18px;
-        margin-top: 2px;
+        width: 16px;
+        height: 16px;
+        margin-top: 1px;
       }
 
       .user-bar .logo .subtitle {
         color: white;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 400;
         opacity: 0.9;
       }
 
       .user-bar .back {
         color: white;
-        margin-right: 15px;
+        margin-right: 12px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -89,11 +90,11 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         fill: currentColor;
         width: 1em;
         height: 1em;
-        font-size: 24px;
+        font-size: 22px;
       }
   
       .typebot-chat-view {
-        margin-top: 140px !important;
+        margin-top: 90px !important;
         padding-top: 20px;
       }
 
