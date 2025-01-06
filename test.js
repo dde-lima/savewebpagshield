@@ -24,36 +24,31 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
         gap: 8px;
       }
   
-      .user-bar .logo .avatar-container {
-        margin: 0;
+      .user-bar .avatar {
+        margin: 0 0 0 5px;
         background-color: orange;
         width: 60px;
         height: 60px;
+        object-fit: cover;
         border-radius: 50%;
         background: linear-gradient(orange, orange) padding-box, 
                   linear-gradient(45deg, #408FF5, #0D65B9, #171C2A) border-box;
-        border: 2.5px solid transparent;
-        padding: 0;
+        border: 3px solid transparent;
+        padding: 1px;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.1);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        box-sizing: border-box;
       }
 
-      .user-bar .logo .avatar-container img {
-        width: 60px;
-        height: 60px;
+      .user-bar .avatar img {
         border-radius: 50%;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        image-rendering: -webkit-optimize-contrast;
-        image-rendering: crisp-edges;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
       }
-  
+
       .user-bar .logo .name-container {
         display: flex;
         flex-direction: column;
@@ -121,6 +116,11 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
           width: 414px;
         }
       }
+
+      .user-bar .logo .avatar-container,
+      .user-bar .logo .avatar-container img {
+        display: none;
+      }
     `;
   
     var cssId = 'myCss';
@@ -154,7 +154,7 @@ function criarBarra(var_nome = 'CredFácil', var_avatar = 'https://s3.atendiment
     var logo = document.createElement("div");
     logo.className = "logo";
     logo.innerHTML = `
-      <div class="avatar-container">
+      <div class="avatar">
         <img src="${var_avatar}" alt="Avatar">
       </div>
       <div class="name-container">
