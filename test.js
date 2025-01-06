@@ -175,25 +175,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   const status = varStatus;
   
   const div = document.createElement('div');
-  const infoHTML = `<div>
-    <div class="user-metadata">
-      <div class="avatar">
-        <div>
-          <img src="${var_avatar}" alt="avatar">
-        </div>
-        <div class="primary-info">
-          <p class="name">${var_nome}</p>
-          <p>${var_insta_nome} . Instagram</p>
-        </div>
-        <div class="secondary-info">
-          <p>${var_seguidores} seguidores . ${var_publi} publicações</p>
-          <p>Segue você</p>
-        </div>
-        <a href="${var_insta_url}" target="_blank">Ver perfil</a>
-      </div>
-    </div>
-  </div>`;
-  
+ 
   div.innerHTML = infoHTML;
   const messagesContainer = botBody.querySelector('.typebot-chat-view');
   messagesContainer.insertBefore(div, messagesContainer.firstChild);
