@@ -24,22 +24,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
       color: white;
       margin-block: 1.5rem;
   }
-  /* Seleciona o primeiro botão dentro da área de chat */
-.typebot-chat-view button:first-of-type {
-  /* Alinha o botão à esquerda, semelhante aos bubbles de mensagens do bot */
-  align-self: flex-start;
-  /* Ajusta a largura conforme necessário para igualar ao tamanho das mensagens */
-  width: auto;
-  /* Remove margens automáticas que possam centralizar o botão */
-  margin-left: 0;
-  margin-right: 0;
-}
-
-/* Reduz o border-radius do span dentro do primeiro botão */
-.typebot-chat-view button:first-of-type span {
-  border-radius: 5px !important; /* ajuste o valor conforme desejado */
-}
-
+  
   .user-metadata img {
       background-color: black;
       width: 60px;
@@ -113,15 +98,6 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
         margin: 0 0 10px 32px;
     }
     
-/* Media query para telas menores, por exemplo, abaixo de 768px */
-/* @media (max-width: 768px) {
-    .user-bar .actions.more {
-        margin: 0 0 1px 1%;
-    }
-} */
-    
-    
-    
     .user-bar .actions.attachment {
     margin: 0 0 0 20px;
     }
@@ -182,9 +158,22 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     .typebot-avatar-container {margin-right: 30px  !important; }
     .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: -10px !important;}
     .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100dvh !important;}
-    
+    }
+
+  /* Ajustes específicos para o primeiro botão */
+  .typebot-chat-view button:first-of-type span.px-\[15px\].py-\[7px\] {
+    border-radius: 5px !important;    /* Reduz o border-radius */
+    padding: 7px 15px !important;      /* Ajusta o tamanho do botão */
+    display: inline-block;
+  }
+
+  .typebot-chat-view button:first-of-type {
+    align-self: flex-start !important; /* Alinha o botão à esquerda */
+    width: auto !important;            /* Define a largura automática */
+    margin: 0 !important;              /* Remove margens */
+  }
   `;
-  
+
   // Verifica se o estilo já foi adicionado, senão, adiciona-o ao shadow DOM do typebot-standard
   var cssId = 'myCss';  
   if (!document.getElementById(cssId)) {
@@ -196,7 +185,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     head.appendChild(styleSheet);
   }
 
-// Remove o scroll no ios
+  // Remove o scroll no ios
   const bodyType = document.querySelector('body');
   let scrollPosition = 0;
   scrollPosition = window.pageYOffset;
@@ -208,7 +197,6 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   var varStatus = document.createElement("span");
   var elementoPai = document.getElementsByTagName("typebot-standard")[0].shadowRoot.querySelector('.typebot-container');
       
-  
   var userBar = document.createElement("div");
   userBar.className = "user-bar";
   
@@ -220,7 +208,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   // Adicionando um evento de clique para redirecionar quando o botão de volta for clicado
   backButton.addEventListener("click", function() {
-  window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
+    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
   });
   
   var avatar = document.createElement("div");
@@ -243,15 +231,15 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z"/>
   </svg>`;
   
-  var phoneAction = document.createElement("div"); // Alterado para um elemento de link <a>
+  var phoneAction = document.createElement("div");
   phoneAction.className = "actions";
   phoneAction.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
   <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
   </svg>`;
   
-  // Adicionando um evento de clique para redirecionar quando o botãoo de volta for clicado
+  // Adicionando um evento de clique para redirecionar quando o ícone do telefone for clicado
   phoneAction.addEventListener("click", function() {
-  window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
+    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
   });
   
   userBar.appendChild(backButton);
@@ -259,18 +247,17 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   userBar.appendChild(name);
   userBar.appendChild(moreActions);
   userBar.appendChild(attachmentAction);
-  userBar.appendChild(phoneAction); // Adicionado o elemento <a> com o í­cone do telefone
+  userBar.appendChild(phoneAction);
   
   if (elementoPai) {
       elementoPai.prepend(userBar);
-    }
+  }
   
-    
-    const botBody = elementoPai
-    const status = varStatus;
-    
-    const div = document.createElement('div');
-    const infoHTML = `<div>
+  const botBody = elementoPai;
+  const status = varStatus;
+  
+  const div = document.createElement('div');
+  const infoHTML = `<div>
     <div class="user-metadata">
         <div class="avatar">
             <div>
@@ -285,7 +272,6 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
                 <p>Segue você</p>
             </div>
             <a href="${var_insta_url}" target="_blank">Ver perfil</a>
-  
         </div>
     </div>
   </div>`;
@@ -300,7 +286,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
 
     const inputContainer = botBody.querySelector('.typebot-input-container');
     if (inputContainer){
-      inputContainer.style.width = botBody.offsetWidth + "px"
+      inputContainer.style.width = botBody.offsetWidth + "px";
     }
   
     const inputForm = botBody.querySelector('.typebot-input-form');
@@ -308,14 +294,13 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
       inputForm.classList.remove("max-w-[350px]");
     }
   
-    if(isTyping && sibling.src) {
-      status.innerText = 'gravando audio...'
+    if(isTyping && sibling?.src) {
+      status.innerText = 'gravando audio...';
     } else if(isTyping) {      
-      status.innerText = 'digitando...'
+      status.innerText = 'digitando...';
     } else {
-      status.innerText = 'online'
+      status.innerText = 'online';
     }
   
-  }, 100)
-  
+  }, 100);
 }
