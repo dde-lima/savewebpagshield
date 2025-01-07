@@ -11,27 +11,52 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   .typebot-input-container {position: fixed; bottom: 10px; right: 15px; z-index: 999;}
   .typebot-input-form .text-input {border-radius: 40px !important; height: 50px;}
   
-  /* Alteração do primeiro botão */
+  /* Alteração apenas para o primeiro botão */
   .typebot-chat-view button:first-of-type {
-    align-self: stretch !important;  /* Garante que o botão ocupe a largura disponível */
-    width: 100% !important; /* Define o botão com a largura das mensagens */
-    margin: 0 !important; /* Remove margens */
+    width: 100% !important;  /* Garante que o botão tenha a mesma largura das mensagens */
+    align-self: flex-start !important; /* Alinha o botão à esquerda */
     padding: 10px !important; /* Ajuste de padding */
+    margin: 0 !important; /* Remove margens */
     border-radius: 5px !important; /* Reduz o border-radius para não ser redondo */
-    text-align: center !important;
+    text-align: center !important; /* Centraliza o texto no botão */
   }
 
   .typebot-chat-view button:first-of-type span.px-\[15px\].py-\[7px\] {
-    border-radius: 5px !important;    /* Reduz o border-radius do conteúdo */
+    border-radius: 5px !important;    /* Reduz o border-radius */
     padding: 10px 0 !important;      
     display: inline-block;
     width: 100%;                     /* Garante que o span ocupe toda a largura do botão */
     box-sizing: border-box;
   }
 
+  /* Deixe o botão de input inalterado */
   .typebot-input-form .typebot-button { 
-    display: none !important; /* Oculta o botão de input no exemplo */
+    background: rrgb(0, 92, 197, 1); 
+    border-radius: 30px !important;  
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    width: 50px; 
+    height: 50px; 
+    border: none; 
+    font-size: 0px; 
+    color: transparent; 
   }
+
+  .typebot-input-form .typebot-button::before { 
+    content: ""; 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    width: 25px; 
+    height: 25px; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="19px"><path d="M476.59 227.05l-.16-.07L49.35 49.84A23.56 23.56 0 0027.14 52 24.65 24.65 0 0016 72.59v113.29a24 24 0 0019.52 23.57l232.93 43.07a4 4 0 010 7.86L35.53 303.45A24 24 0 0016 327v113.31A23.57 23.57 0 0026.59 460a23.94 23.94 0 0013.22 4 24.55 24.55 0 009.52-1.93L476.4 285.94l.19-.09a32 32 0 000-58.8z" fill="white"/></svg>');
+  }
+
+  .typebot-input-form .typebot-button .send-icon { display: none; }
 
   .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100% !important;}
   
@@ -189,7 +214,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     head.appendChild(styleSheet);
   }
 
-  // Remove o scroll no iOS
+  // Remove o scroll no ios
   const bodyType = document.querySelector('body');
   let scrollPosition = 0;
   scrollPosition = window.pageYOffset;
@@ -242,7 +267,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   </svg>`;
   
   phoneAction.addEventListener("click", function() {
-    window.location.href = `${var_insta_url}`;
+  window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
   });
   
   userBar.appendChild(backButton);
@@ -250,15 +275,15 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   userBar.appendChild(name);
   userBar.appendChild(moreActions);
   userBar.appendChild(attachmentAction);
-  userBar.appendChild(phoneAction); 
+  userBar.appendChild(phoneAction); // Adicionado o elemento <a> com o í­cone do telefone
   
   if (elementoPai) {
-    elementoPai.prepend(userBar);
+      elementoPai.prepend(userBar);
   }
-
-  const botBody = elementoPai;
+  
+  const botBody = elementoPai
   const status = varStatus;
-
+  
   const div = document.createElement('div');
   const infoHTML = `<div>
     <div class="user-metadata">
@@ -289,7 +314,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
 
     const inputContainer = botBody.querySelector('.typebot-input-container');
     if (inputContainer){
-      inputContainer.style.width = botBody.offsetWidth + "px";
+      inputContainer.style.width = botBody.offsetWidth + "px"
     }
   
     const inputForm = botBody.querySelector('.typebot-input-form');
@@ -297,12 +322,14 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
       inputForm.classList.remove("max-w-[350px]");
     }
   
-    if(isTyping && sibling?.src) {
-      status.innerText = 'gravando audio...';
+    if(isTyping && sibling.src) {
+      status.innerText = 'gravando audio...'
     } else if(isTyping) {      
-      status.innerText = 'digitando...';
+      status.innerText = 'digitando...'
     } else {
-      status.innerText = 'online';
+      status.innerText = 'online'
     }
-  }, 100);
+  
+  }, 100)
+  
 }
