@@ -2,56 +2,47 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
 
   // Estilos CSS embutidos diretamente no JavaScript
   const css = `
-  .typebot-container { background: #000; }
+  .typebot-container {background: #000;}
   
   div > div.typebot-chat-view.scroll-smooth.gap-2 > div > div > div.flex.flex-col.flex-1.gap-2 > div { margin-top: 20px;}
   
-  .typebot-chat-view { padding-top: 90px; }
+  .typebot-chat-view {padding-top: 90px}
 
-  .typebot-input-container {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    z-index: 999;
-    width: calc(100% - 20px); /* Adapta a largura ao tamanho da tela */
-  }
+  .typebot-input-container {position: fixed; bottom: 10px; right: 15px; z-index: 999;}
+  .typebot-input-form .text-input {border-radius: 40px !important; height: 50px;}
   
-  .typebot-input-form .text-input {
-    width: 100%; /* Adapta a largura ao container */
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-
+  /* Ajuste específico para o primeiro botão */
   .typebot-input-form .typebot-button {
-    background-color: #005cc5;
+    content: "";
+    background: rrgb(0, 92, 197, 1);
+    border-radius: 5px !important;  /* Remove o border-radius grande */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;  /* Faz com que o botão tenha a mesma largura das mensagens */
+    height: 50px;  /* Ajuste de altura para alinhar melhor */
     border: none;
-    border-radius: 5px; /* Reduzido */
-    color: #fff;
-    padding: 10px;
+    font-size: 16px !important; /* Ajusta o tamanho da fonte */
+    color: white;
     text-align: center;
-    width: 100%; /* Mesma largura das mensagens */
-    box-sizing: border-box;
-    font-size: 16px;
-    cursor: pointer;
   }
-  
-  .typebot-input-form .typebot-button:hover {
-    background-color: #003f99;
+
+  .typebot-input-form .typebot-button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="19px"><path d="M476.59 227.05l-.16-.07L49.35 49.84A23.56 23.56 0 0027.14 52 24.65 24.65 0 0016 72.59v113.29a24 24 0 0019.52 23.57l232.93 43.07a4 4 0 010 7.86L35.53 303.45A24 24 0 0016 327v113.31A23.57 23.57 0 0026.59 460a23.94 23.94 0 0013.22 4 24.55 24.55 0 009.52-1.93L476.4 285.94l.19-.09a32 32 0 000-58.8z" fill="white"/></svg>');
   }
-  
-  .typebot-input-form .typebot-button:focus {
-    outline: none;
-    box-shadow: 0 0 4px rgba(0, 92, 197, 0.8);
-  }
-  
-  .typebot-container {
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    height: 100% !important;
-  }
+
+  .typebot-input-form .typebot-button .send-icon { display: none; }
+
+  .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100% !important;}
   
   .user-metadata {
       display: flex;
@@ -61,7 +52,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
       color: white;
       margin-block: 1.5rem;
   }
-
+  
   .user-metadata img {
       background-color: black;
       width: 60px;
@@ -93,7 +84,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
       opacity: .7;
   }
 
-  .hide { display: none!important; }
+  .hide {display: none!important;}
   #lite-badge { display: none !important; }
     
   /* User Bar */
@@ -182,17 +173,18 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   }
 
   .typebot-avatar-container  { margin-right: 15px !important; }
-  .typebot-avatar-container > div > figure { width: 40px !important; height: 40px !important; margin-top: 0px !important; }
+  .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: 0px !important;}
   
   .typebot-chat-view.scroll-smooth.gap-2 > div > div > div.flex.flex-col.flex-1.gap-2 > div {
     margin-top: 0px !important;
   }
-
+  
   @media screen and (max-width: 1280px) {
-    .typebot-avatar-container { margin-right: 30px  !important; }
-    .typebot-avatar-container > div > figure { width: 40px !important; height: 40px !important; margin-top: -10px !important; }
-    .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100dvh !important; }
+    .typebot-avatar-container {margin-right: 30px  !important; }
+    .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: -10px !important;}
+    .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100dvh !important;}
   }
+
   `;
 
   // Verifica se o estilo já foi adicionado, senão, adiciona-o ao shadow DOM do typebot-standard
@@ -208,7 +200,8 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
 
   // Remove o scroll no iOS
   const bodyType = document.querySelector('body');
-  let scrollPosition = window.pageYOffset;
+  let scrollPosition = 0;
+  scrollPosition = window.pageYOffset;
   bodyType.style.overflow = 'hidden';
   bodyType.style.position = 'fixed';
   bodyType.style.top = `-${scrollPosition}px`;
@@ -226,8 +219,9 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
   </svg>`;
   
+  // Adicionando um evento de clique para redirecionar quando o botão de volta for clicado
   backButton.addEventListener("click", function() {
-    window.location.href = `${var_insta_url}`;
+    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
   });
   
   var avatar = document.createElement("div");
@@ -236,10 +230,10 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   var name = document.createElement("div");
   name.className = "name";
-  name.innerHTML = '<span>'+var_nome+'</span>&nbsp<span style="float: right" data-testid="psa-verified" data-icon="psa-verified"><svg viewBox="0 0 18 18" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><polygon fill="#0099FD" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9"></polygon><polygon fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4"></polygon></svg></span><span class="status"></span>';
+  name.innerHTML = '<span>'+var_nome+'</span>&nbsp<span style="float: right" data-testid="psa-verified" data-icon="psa-verified" class=""><svg viewBox="0 0 18 18" height="18" width="18" preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px" enable-background="new 0 0 18 18" xml:space="preserve"><polygon id="Star-2" fill="#0099FD" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9 "></polygon><polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4 "></polygon></svg></span><span class="status"></span>';
   
   varStatus.className = "status";
-  name.appendChild(varStatus);
+  name.appendChild(varStatus)
   
   var moreActions = document.createElement("div");
   moreActions.className = "actions more";
@@ -253,7 +247,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   var phoneAction = document.createElement("div");
   phoneAction.className = "actions";
   phoneAction.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
-  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.483-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
   </svg>`;
   
   phoneAction.addEventListener("click", function() {
@@ -265,15 +259,15 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   userBar.appendChild(name);
   userBar.appendChild(moreActions);
   userBar.appendChild(attachmentAction);
-  userBar.appendChild(phoneAction);
+  userBar.appendChild(phoneAction); 
   
   if (elementoPai) {
-      elementoPai.prepend(userBar);
+    elementoPai.prepend(userBar);
   }
-  
+
   const botBody = elementoPai;
   const status = varStatus;
-  
+
   const div = document.createElement('div');
   const infoHTML = `<div>
     <div class="user-metadata">
@@ -319,6 +313,5 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     } else {
       status.innerText = 'online';
     }
-  
   }, 100);
 }
