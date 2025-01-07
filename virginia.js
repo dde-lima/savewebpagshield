@@ -11,36 +11,27 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   .typebot-input-container {position: fixed; bottom: 10px; right: 15px; z-index: 999;}
   .typebot-input-form .text-input {border-radius: 40px !important; height: 50px;}
   
-  /* Ajuste específico para o primeiro botão */
-  .typebot-input-form .typebot-button {
-    content: "";
-    background: rrgb(0, 92, 197, 1);
-    border-radius: 5px !important;  /* Remove o border-radius grande */
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100% !important;  /* Faz com que o botão tenha a mesma largura das mensagens */
-    height: 50px;  /* Ajuste de altura para alinhar melhor */
-    border: none;
-    font-size: 16px !important; /* Ajusta o tamanho da fonte */
-    color: white;
-    text-align: center;
+  /* Alteração do primeiro botão */
+  .typebot-chat-view button:first-of-type {
+    align-self: stretch !important;  /* Garante que o botão ocupe a largura disponível */
+    width: 100% !important; /* Define o botão com a largura das mensagens */
+    margin: 0 !important; /* Remove margens */
+    padding: 10px !important; /* Ajuste de padding */
+    border-radius: 5px !important; /* Reduz o border-radius para não ser redondo */
+    text-align: center !important;
   }
 
-  .typebot-input-form .typebot-button::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 25px;
-    height: 25px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="19px"><path d="M476.59 227.05l-.16-.07L49.35 49.84A23.56 23.56 0 0027.14 52 24.65 24.65 0 0016 72.59v113.29a24 24 0 0019.52 23.57l232.93 43.07a4 4 0 010 7.86L35.53 303.45A24 24 0 0016 327v113.31A23.57 23.57 0 0026.59 460a23.94 23.94 0 0013.22 4 24.55 24.55 0 009.52-1.93L476.4 285.94l.19-.09a32 32 0 000-58.8z" fill="white"/></svg>');
+  .typebot-chat-view button:first-of-type span.px-\[15px\].py-\[7px\] {
+    border-radius: 5px !important;    /* Reduz o border-radius do conteúdo */
+    padding: 10px 0 !important;      
+    display: inline-block;
+    width: 100%;                     /* Garante que o span ocupe toda a largura do botão */
+    box-sizing: border-box;
   }
 
-  .typebot-input-form .typebot-button .send-icon { display: none; }
+  .typebot-input-form .typebot-button { 
+    display: none !important; /* Oculta o botão de input no exemplo */
+  }
 
   .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100% !important;}
   
