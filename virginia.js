@@ -10,7 +10,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
 
   .typebot-input-container {position: fixed; bottom: 10px; right: 15px; z-index: 999;}
   .typebot-input-form .text-input {border-radius: 40px !important; height: 50px;}
-  .typebot-input-form .typebot-button { content: ""; background: rrgb(0, 92, 197, 1); border-radius: 30px !important;  position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 50px; border: none; font-size: 0px; color: transparent; }
+  .typebot-input-form .typebot-button { content: ""; background: rrgb(0, 92, 197, 1); border-radius: 30px !important;  position: relative; display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border: none; font-size: 0px; color: transparent; }
   .typebot-input-form .typebot-button::before { content: ""; position: absolute; top: 50%; transform: translateY(-50%); width: 25px; height: 25px; background-repeat: no-repeat; background-size: cover; background-image: url('data:image/svg+xml;charset=utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="19px"><path d="M476.59 227.05l-.16-.07L49.35 49.84A23.56 23.56 0 0027.14 52 24.65 24.65 0 0016 72.59v113.29a24 24 0 0019.52 23.57l232.93 43.07a4 4 0 010 7.86L35.53 303.45A24 24 0 0016 327v113.31A23.57 23.57 0 0026.59 460a23.94 23.94 0 0013.22 4 24.55 24.55 0 009.52-1.93L476.4 285.94l.19-.09a32 32 0 000-58.8z" fill="white"/></svg>'); }
   .typebot-input-form .typebot-button .send-icon { display: none; }
 
@@ -168,8 +168,16 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: -10px !important;}
     .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100dvh !important;}
     
+  }
+
+  /* CSS para o primeiro botão */
+  .typebot-chat-view button:first-of-type {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
   `;
-  
+
   // Verifica se o estilo já foi adicionado, senão, adiciona-o ao shadow DOM do typebot-standard
   var cssId = 'myCss';  
   if (!document.getElementById(cssId)) {
@@ -181,7 +189,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     head.appendChild(styleSheet);
   }
 
-// Remove o scroll no ios
+  // Remove o scroll no ios
   const bodyType = document.querySelector('body');
   let scrollPosition = 0;
   scrollPosition = window.pageYOffset;
@@ -205,7 +213,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   // Adicionando um evento de clique para redirecionar quando o botão de volta for clicado
   backButton.addEventListener("click", function() {
-  window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
+    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
   });
   
   var avatar = document.createElement("div");
@@ -236,7 +244,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   // Adicionando um evento de clique para redirecionar quando o botãoo de volta for clicado
   phoneAction.addEventListener("click", function() {
-  window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
+    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
   });
   
   userBar.appendChild(backButton);
@@ -248,6 +256,58 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   if (elementoPai) {
       elementoPai.prepend(userBar);
+  }
+  
+  const botBody = elementoPai
+  const status = varStatus;
+  
+  const div = document.createElement('div');
+  const infoHTML = `<div>
+    <div class="user-metadata">
+        <div class="avatar">
+            <div>
+                <img src="${var_avatar}" alt="avatar">
+            </div>
+            <div class="primary-info">
+                <p class="name">${var_nome}</p>
+                <p>${var_insta_nome} . Instagram</p>
+            </div>
+            <div class="secondary-info">
+                <p>${var_seguidores} seguidores . ${var_publi} publicações</p>
+                <p>Segue você</p>
+            </div>
+            <a href="${var_insta_url}" target="_blank">Ver perfil</a>
+  
+        </div>
+    </div>
+  </div>`;
+  
+  div.innerHTML = infoHTML;
+  const messagesContainer = botBody.querySelector('.typebot-chat-view');
+  messagesContainer.insertBefore(div, messagesContainer.firstChild);
+  
+  setInterval(() => {
+    const isTyping = botBody.querySelector('.bubble1');
+    const sibling = isTyping?.parentElement?.parentElement?.nextSibling;
+
+    const inputContainer = botBody.querySelector('.typebot-input-container');
+    if (inputContainer){
+      inputContainer.style.width = botBody.offsetWidth + "px"
     }
+  
+    const inputForm = botBody.querySelector('.typebot-input-form');
+    if (inputForm){
+      inputForm.classList.remove("max-w-[350px]");
+    }
+  
+    if(isTyping && sibling.src) {
+      status.innerText = 'gravando audio...'
+    } else if(isTyping) {      
+      status.innerText = 'digitando...'
+    } else {
+      status.innerText = 'online'
+    }
+  
+  }, 100)
   
 }
