@@ -8,11 +8,18 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   .typebot-chat-view {padding-top: 90px}
 
-  .typebot-input-container {position: fixed; bottom: 10px; right: 15px; z-index: 999;}
+  /* Ajusta a posição considerando a área segura inferior do iPhone */
+  .typebot-input-container {
+    position: fixed; 
+    bottom: calc(10px + env(safe-area-inset-bottom, 0)); 
+    right: 15px; 
+    z-index: 999;
+  }
+  
   .typebot-input-form .text-input {border-radius: 40px !important; height: 50px;}
   .typebot-input-form .typebot-button { 
     content: ""; 
-    background: rgba(0, 92, 197, 1); /* Correção aplicada aqui */
+    background: rgba(0, 92, 197, 1); 
     border-radius: 30px !important;  
     position: relative; 
     display: flex; 
@@ -95,7 +102,8 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     position: absolute;
     z-index: 99999;
     display: block;
-    top: 0;
+    /* Ajusta a posição considerando a área segura superior do iPhone */
+    top: calc(0px + env(safe-area-inset-top, 0));
   }
     
   .user-bar:after {
@@ -172,7 +180,6 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   .typebot-avatar-container  { margin-right: 15px !important; }
   .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: 0px !important;}
     
-    
   .typebot-chat-view.scroll-smooth.gap-2 > div > div > div.flex.flex-col.flex-1.gap-2 > div {
     margin-top: 0px !important;
   }
@@ -195,14 +202,16 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     head.appendChild(styleSheet);
   }
 
-  // Remove o scroll no iOS
+  // Removemos a alteração de scroll global para evitar interferência no iOS
+  /*
   const bodyType = document.querySelector('body');
   let scrollPosition = window.pageYOffset;
   bodyType.style.overflow = 'hidden';
   bodyType.style.position = 'fixed';
   bodyType.style.top = `-${scrollPosition}px`;
   bodyType.style.width = '100%';
-  
+  */
+
   var varStatus = document.createElement("span");
   var elementoPai = document.getElementsByTagName("typebot-standard")[0].shadowRoot.querySelector('.typebot-container');
       
@@ -215,7 +224,6 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
   </svg>`;
   
-  // Evento de clique para redirecionar ao clicar no botão de volta
   backButton.addEventListener("click", function() {
     window.location.href = `${var_insta_url}`;
   });
@@ -246,7 +254,6 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
   </svg>`;
   
-  // Evento de clique para redirecionar ao clicar no ícone do telefone
   phoneAction.addEventListener("click", function() {
     window.location.href = `${var_insta_url}`;
   });
