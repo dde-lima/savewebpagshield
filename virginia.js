@@ -57,12 +57,12 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   }
 
   .hide {display: none!important;}
-    #lite-badge {
+  #lite-badge {
     display: none !important;
-    }
+  }
 
-    /* User Bar */
-    .user-bar {
+  /* User Bar */
+  .user-bar {
     width: 100%;
     height: 100px;
     background: #121212;
@@ -73,41 +73,41 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     z-index: 99999;
     display: block;
     top: 0;
-    }
+  }
 
-    .user-bar:after {
+  .user-bar:after {
     content: "";
     display: table;
     clear: both;
-    }
+  }
 
-    .user-bar div {
+  .user-bar div {
     float: left;
     transform: translateY(-50%);
     position: relative;
     top: 50%;
     margin-left: 10px;
-    }
+  }
 
-    .user-bar .actions {
+  .user-bar .actions {
     float: right;
     margin: 0 0 0 20px;
-    }
+  }
 
-    .user-bar .actions.more {
-        margin: 0 0 10px 32px;
-    }
+  .user-bar .actions.more {
+      margin: 0 0 10px 32px;
+  }
 
-    .user-bar .actions.attachment {
+  .user-bar .actions.attachment {
     margin: 0 0 0 20px;
-    }
+  }
 
-    .user-bar .actions.attachment i {
+  .user-bar .actions.attachment i {
     display: block;
     transform: rotate(-45deg);
-    }
+  }
 
-    .user-bar .avatar {
+  .user-bar .avatar {
     margin: 0 0 0 5px;
     background-color: black;
     width: 50px;
@@ -117,18 +117,18 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     background: linear-gradient(black, black) padding-box, linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7) border-box;
     border: 3px solid transparent;
     padding: 1px;
-    }
+  }
 
-    .user-bar .avatar img {
+  .user-bar .avatar img {
     border-radius: 50%;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    }
+  }
 
-    .user-bar .name {
+  .user-bar .name {
     float: left;
     font-size: 17px;
     font-weight: 600;
@@ -137,39 +137,40 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
     margin: 0 0 0 8px;
     overflow: hidden;
     white-space: nowrap;
-    }
+  }
 
-    .user-bar .status {
+  .user-bar .status {
     display: block;
     font-size: 13px;
     font-weight: 400;
     letter-spacing: 0;
-    }
+  }
 
-    .typebot-avatar-container  { margin-right: 15px !important; }
-    .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: 0px !important;}
+  .typebot-avatar-container  { margin-right: 15px !important; }
+  .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: 0px !important;}
 
-    .typebot-chat-view.scroll-smooth.gap-2 > div > div > div.flex.flex-col.flex-1.gap-2 > div {
+  .typebot-chat-view.scroll-smooth.gap-2 > div > div > div.flex.flex-col.flex-1.gap-2 > div {
     margin-top: 0px !important;
-    }
+  }
 
-    @media screen and (max-width: 1280px) {
-      .typebot-avatar-container {margin-right: 30px  !important; }
-      .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: -10px !important;}
-      .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100dvh !important;}
-    }
+  @media screen and (max-width: 1280px) {
+    .typebot-avatar-container {margin-right: 30px  !important; }
+    .typebot-avatar-container > div > figure {width: 40px !important; height: 40px !important; margin-top: -10px !important;}
+    .typebot-container { background-size: initial !important; background-repeat: repeat-x !important; height: 100dvh !important;}
+  }
 
-    /* Regra para o primeiro botão no chat */
-    .typebot-chat-view button:first-of-type {
-      width: 100% !important;
-      margin-left: 0;
-    }
+  /* Regra para o primeiro botão de resposta no chat */
+  .typebot-chat-view button[data-itemid]:first-of-type {
+    width: 100% !important;
+    margin-left: 0;
+  }
   `;
   
   // Verifica se o estilo já foi adicionado, senão, adiciona-o ao shadow DOM do typebot-standard
   var cssId = 'myCss';  
   if (!document.getElementById(cssId)) {
-    var head = document.getElementsByTagName("typebot-standard")[0].shadowRoot.querySelector('.typebot-container');
+    var head = document.getElementsByTagName("typebot-standard")[0]
+                  .shadowRoot.querySelector('.typebot-container');
     var styleSheet = document.createElement("style");
     styleSheet.id = cssId;
     styleSheet.type = "text/css";
@@ -187,7 +188,8 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   bodyType.style.width = '100%';
   
   var varStatus = document.createElement("span");
-  var elementoPai = document.getElementsByTagName("typebot-standard")[0].shadowRoot.querySelector('.typebot-container');
+  var elementoPai = document.getElementsByTagName("typebot-standard")[0]
+                      .shadowRoot.querySelector('.typebot-container');
       
   var userBar = document.createElement("div");
   userBar.className = "user-bar";
@@ -198,9 +200,8 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
   </svg>`;
   
-  // Adicionando um evento de clique para redirecionar quando o botão de volta for clicado
   backButton.addEventListener("click", function() {
-    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
+    window.location.href = `${var_insta_url}`;
   });
   
   var avatar = document.createElement("div");
@@ -209,7 +210,7 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   
   var name = document.createElement("div");
   name.className = "name";
-  name.innerHTML = '<span>'+var_nome+'</span>&nbsp<span style="float: right" data-testid="psa-verified" data-icon="psa-verified" class=""><svg viewBox="0 0 18 18" height="18" width="18" preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px" enable-background="new 0 0 18 18" xml:space="preserve"><polygon id="Star-2" fill="#0099FD" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9 "></polygon><polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4 "></polygon></svg></span><span class="status"></span>';
+  name.innerHTML = '<span>'+var_nome+'</span>&nbsp<span style="float: right" data-testid="psa-verified" data-icon="psa-verified" class=""><svg viewBox="0 0 18 18" height="18" width="18" preserveAspectRatio="xMidYMid meet"><polygon id="Star-2" fill="#0099FD" points="9,16 7.1,16.9 5.8,15.2 3.7,15.1 3.4,13 1.5,12 2.2,9.9 1.1,8.2 2.6,6.7 2.4,4.6 4.5,4 5.3,2 7.4,2.4 9,1.1 10.7,2.4 12.7,2 13.6,4 15.6,4.6 15.5,6.7 17,8.2 15.9,9.9 16.5,12 14.7,13 14.3,15.1 12.2,15.2 10.9,16.9"></polygon><polygon id="Check-Icon" fill="#FFFFFF" points="13.1,7.3 12.2,6.5 8.1,10.6 5.9,8.5 5,9.4 8,12.4"></polygon></svg></span><span class="status"></span>';
   
   varStatus.className = "status";
   name.appendChild(varStatus);
@@ -229,9 +230,8 @@ function criarBarra(var_nome = 'Seu Nome', var_avatar = '', var_insta_nome = 'se
   <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
   </svg>`;
 
-  // Adicionando um evento de clique para redirecionar quando o botão de telefone for clicado
   phoneAction.addEventListener("click", function() {
-    window.location.href = `${var_insta_url}`; // Substitua pelo URL desejado
+    window.location.href = `${var_insta_url}`;
   });
 
   userBar.appendChild(backButton);
